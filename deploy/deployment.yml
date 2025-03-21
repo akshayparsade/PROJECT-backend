@@ -16,6 +16,6 @@ spec:
     spec:
       conatiners:        
         - name: backend-app
-          image: my_cbz_project:latest
+          image: akshayparsade/my_cbz_project:latest
           ports:
             - containerPort: 8080
