@@ -14,7 +14,6 @@ pipeline{
               sh 'mvn clean package'
             }
         } 
-        stages {
         stage('Login to Docker Hub') {
             steps {
                 script {
