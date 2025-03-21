@@ -14,7 +14,7 @@ spec:
       labels:
         app: backend-app
     spec:
-      conatiners:        
+      containers:        
         - name: backend-app
           image: akshayparsade/my_cbz_project:latest
           ports:
