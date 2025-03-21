@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment {
+        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials') // Use the stored Jenkins credentials
+    }
     stages{
         stage("Pull"){
            steps{
@@ -11,6 +14,15 @@ pipeline{
               sh 'mvn clean package'
             }
         } 
+        stages {
+        stage('Login to Docker Hub') {
+            steps {
+                script {
+                    // Use Jenkins credentials to login to Docker Hub
+                    sh "echo $DOCKER_HUB_CREDENTIALS_PSW | docker login -u $DOCKER_HUB_CREDENTIALS_USR --password-stdin"
+                }
+            }
+        }
         stage("Deploy"){
            steps{
                 sh '''
